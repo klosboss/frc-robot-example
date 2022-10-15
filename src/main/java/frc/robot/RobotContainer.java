@@ -21,14 +21,15 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final Joystick lefJoystick = new Joystick(0);
-  private final Joystick righJoystick = new Joystick(0);
+  private final Joystick lefJoystick = new Joystick(Constants.LEFT_TANK_JOYSTICK_USB_PORT);
+  private final Joystick righJoystick = new Joystick(Constants.RIGHT_TANK_JOYSTICK_USB_PORT);
 
   private final DriveTrain driveTrain = new DriveTrain();
   private final TankDrive tankDrive = new TankDrive(driveTrain, new TankDriveController(lefJoystick, righJoystick));
   
 
   // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  private final Command m_autoCommand = tankDrive;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
