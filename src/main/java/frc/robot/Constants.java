@@ -24,8 +24,8 @@ public final class Constants {
 
     /* HCI Identifiers */
     public static final int LEFT_TANK_JOYSTICK_USB_PORT = 0;
-    public static final int RIGHT_TANK_JOYSTICK_USB_PORT = 0;
-    public static final int XBOX_CONTROLLER_USB_PORT = 0;
+    public static final int RIGHT_TANK_JOYSTICK_USB_PORT = 1;
+    public static final int XBOX_CONTROLLER_USB_PORT = 2;
     public static final int TANK_JOYSTICK_AXIS = 0;
     public static final int TANK_JOYSTICK_TURBO_BUTTON_ID = ButtonType.kTrigger.value;
 

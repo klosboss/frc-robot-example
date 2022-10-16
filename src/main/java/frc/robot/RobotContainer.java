@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.Joystick.ButtonType;
+import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.TankDrive;
 import frc.robot.controllers.TankDriveController;
 import frc.robot.subsystems.DriveTrain;
@@ -58,6 +59,9 @@ public class RobotContainer {
     new JoystickButton(rightJoystick, Constants.TANK_JOYSTICK_TURBO_BUTTON_ID)
       .whenPressed(tankDrive::activateTurbo, driveTrain)
       .whenReleased(tankDrive::deactivateTurbo, driveTrain);
+
+    // new JoystickButton(xboxController, Button.)
+    //   .whenPressed(m_autoCommand)
   }
 
   /**
