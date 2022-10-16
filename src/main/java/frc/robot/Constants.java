@@ -17,10 +17,11 @@ import edu.wpi.first.wpilibj.Joystick.ButtonType;
 public final class Constants {
 
     /* Robot Identifiers */
-    public static final int MOTOR_LEFT_1_ID = 0;
-    public static final int MOTOR_LEFT_2_ID = 1;
-    public static final int MOTOR_RIGHT_1_ID = 2;
-    public static final int MOTOR_RIGHT_2_ID = 3;
+    public static final int MOTOR_LEFT_1_ID = 3;
+    public static final int MOTOR_LEFT_2_ID = 4;
+    public static final int MOTOR_RIGHT_1_ID = 1;
+    public static final int MOTOR_RIGHT_2_ID = 2;
+    public static final int ARM_MOTOR_ID = 6;
 
     /* HCI Identifiers */
     public static final int LEFT_TANK_JOYSTICK_USB_PORT = 0;
@@ -31,4 +32,7 @@ public final class Constants {
 
 
     public static final double TANK_DRIVE_LIMITER_VALUE = 0.9;
+    public static final double ARM_UP_MOTOR_SPEED_PERCENTAGE = 0.5;
+    public static final double ARM_DOWN_MOTOR_SPEED_PERCENTAGE = 0.3;
+    
 }

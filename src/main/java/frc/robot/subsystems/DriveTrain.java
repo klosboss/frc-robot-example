@@ -5,16 +5,17 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class DriveTrain extends SubsystemBase {
 
-  private final TalonSRX motorLeft1 = new TalonSRX(Constants.MOTOR_LEFT_1_ID);
-  private final TalonSRX motorLeft2 = new TalonSRX(Constants.MOTOR_LEFT_2_ID);
-  private final TalonSRX motorRight1 = new TalonSRX(Constants.MOTOR_RIGHT_1_ID);
-  private final TalonSRX motorRight2 = new TalonSRX(Constants.MOTOR_RIGHT_2_ID);
+  private final WPI_VictorSPX motorLeft1 = new WPI_VictorSPX(Constants.MOTOR_LEFT_1_ID);
+  private final WPI_VictorSPX motorLeft2 = new WPI_VictorSPX(Constants.MOTOR_LEFT_2_ID);
+  private final WPI_VictorSPX motorRight1 = new WPI_VictorSPX(Constants.MOTOR_RIGHT_1_ID);
+  private final WPI_VictorSPX motorRight2 = new WPI_VictorSPX(Constants.MOTOR_RIGHT_2_ID);
 
   /** Creates a new DriveTrain. */
   public DriveTrain() {
