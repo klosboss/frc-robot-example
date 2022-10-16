@@ -10,7 +10,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.Joystick.ButtonType;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.TankDrive;
+import frc.robot.commands.AdjustArm;
+import frc.robot.controllers.AdjustArmController;
 import frc.robot.controllers.TankDriveController;
+import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -30,6 +33,9 @@ public class RobotContainer {
 
   private final DriveTrain driveTrain = new DriveTrain();
   private final TankDrive tankDrive = new TankDrive(driveTrain, new TankDriveController(leftJoystick, rightJoystick));
+
+  private final Arm arm = new Arm();
+  private final AdjustArm AdjustArm = new AdjustArm(arm, new AdjustArmController(xboxController));
   
 
   // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
@@ -44,6 +50,7 @@ public class RobotContainer {
 
   private void configureSubsystems() {
     driveTrain.setDefaultCommand(tankDrive);
+    arm.setDefaultCommand(AdjustArm);
   }
 
   /**

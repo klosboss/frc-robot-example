@@ -1,14 +1,21 @@
 package frc.robot.controllers;
 
-/** Add your docs here. */
+import edu.wpi.first.wpilibj.XboxController;
+
 public class AdjustArmController {
 
-    public boolean isGoingUp() {
-        return false;
+    private final XboxController xboxController;
+
+    public AdjustArmController(XboxController xboxController) {
+        this.xboxController = xboxController;
     }
 
-    public boolean isGoingDown() {
-        return false;
+    public boolean shouldRaise() {
+        return this.xboxController.getYButtonPressed();
+    }
+
+    public boolean shouldLower() {
+        return this.xboxController.getAButtonPressed();
     }
 
 

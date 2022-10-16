@@ -6,16 +6,17 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.controllers.AdjustArmController;
-import frc.robot.subsystems.ArmIntake;
+import frc.robot.subsystems.Arm;
 
 public class AdjustArm extends CommandBase {
-  private final ArmIntake armIntake;
+  private final Arm arm;
   private final AdjustArmController controller;
+
   /** Creates a new AdjustArm. */
-  public AdjustArm(ArmIntake armIntake, AdjustArmController controller) {
-    this.armIntake = armIntake;
+  public AdjustArm(Arm arm, AdjustArmController controller) {
+    this.arm = arm;
     this.controller = controller;
-    addRequirements(armIntake);
+    addRequirements(arm);
   }
 
   // Called when the command is initially scheduled.
@@ -25,12 +26,10 @@ public class AdjustArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    boolean isGoingUp = controller.isGoingUp();
-    boolean isGoingDown = controller.isGoingDown();
-    if (isGoingUp) {
-      armIntake.raiseArm();
-    } else if (isGoingDown) {
-      armIntake.lowerArm();
+    if (controller.shouldRaise()) {
+      arm.raise();
+    } else if (controller.shouldLower()) {
+      arm.lower();
     }
   }
 
