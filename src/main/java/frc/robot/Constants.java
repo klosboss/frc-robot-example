@@ -22,6 +22,7 @@ public final class Constants {
     public static final int MOTOR_RIGHT_1_ID = 1;
     public static final int MOTOR_RIGHT_2_ID = 2;
     public static final int ARM_MOTOR_ID = 6;
+    public static final int ARM_INTAKE_MOTOR_ID = 5;
 
     /* Robot Identifiers - DIO IDs */
     public static final int ARM_UP_SENSOR_ID = 0;
@@ -33,10 +34,10 @@ public final class Constants {
     public static final int XBOX_CONTROLLER_USB_PORT = 2;
     public static final int TANK_JOYSTICK_AXIS = 0;
     public static final int TANK_JOYSTICK_TURBO_BUTTON_ID = ButtonType.kTrigger.value;
-
+    
 
     public static final double TANK_DRIVE_LIMITER_VALUE = 0.9;
     public static final double ARM_UP_MOTOR_SPEED_PERCENTAGE = 0.5;
     public static final double ARM_DOWN_MOTOR_SPEED_PERCENTAGE = 0.3;
-    
+    public static final boolean INSTANT_MAX_BALL_MACHINE_SPEED = true;
 }
