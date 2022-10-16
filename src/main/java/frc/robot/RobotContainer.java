@@ -28,7 +28,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Joystick leftJoystick = new Joystick(Constants.LEFT_TANK_JOYSTICK_USB_PORT);
   private final Joystick rightJoystick = new Joystick(Constants.RIGHT_TANK_JOYSTICK_USB_PORT);
-  private final XboxController xboxController = new XboxController(Constants.XBOX_CONTROLLER_USB_PORT)
+  private final XboxController xboxController = new XboxController(Constants.XBOX_CONTROLLER_USB_PORT);
 
   private final DriveTrain driveTrain = new DriveTrain();
   private final TankDrive tankDrive = new TankDrive(driveTrain, new TankDriveController(leftJoystick, rightJoystick));
