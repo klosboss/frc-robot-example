@@ -7,10 +7,12 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.Joystick.ButtonType;
 import frc.robot.commands.TankDrive;
 import frc.robot.controllers.TankDriveController;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
@@ -21,11 +23,12 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final Joystick lefJoystick = new Joystick(Constants.LEFT_TANK_JOYSTICK_USB_PORT);
-  private final Joystick righJoystick = new Joystick(Constants.RIGHT_TANK_JOYSTICK_USB_PORT);
+  private final Joystick leftJoystick = new Joystick(Constants.LEFT_TANK_JOYSTICK_USB_PORT);
+  private final Joystick rightJoystick = new Joystick(Constants.RIGHT_TANK_JOYSTICK_USB_PORT);
+  private final XboxController xboxController = new XboxController(Constants.XBOX_CONTROLLER_USB_PORT)
 
   private final DriveTrain driveTrain = new DriveTrain();
-  private final TankDrive tankDrive = new TankDrive(driveTrain, new TankDriveController(lefJoystick, righJoystick));
+  private final TankDrive tankDrive = new TankDrive(driveTrain, new TankDriveController(leftJoystick, rightJoystick));
   
 
   // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
@@ -39,7 +42,7 @@ public class RobotContainer {
   }
 
   private void configureSubsystems() {
-
+    driveTrain.setDefaultCommand(tankDrive);
   }
 
   /**
@@ -49,7 +52,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-
+    new JoystickButton(leftJoystick, Constants.TANK_JOYSTICK_TURBO_BUTTON_ID)
+      .whenPressed(tankDrive::activateTurbo, driveTrain)
+      .whenReleased(tankDrive::deactivateTurbo, driveTrain);
+    new JoystickButton(rightJoystick, Constants.TANK_JOYSTICK_TURBO_BUTTON_ID)
+      .whenPressed(tankDrive::activateTurbo, driveTrain)
+      .whenReleased(tankDrive::deactivateTurbo, driveTrain);
   }
 
   /**
