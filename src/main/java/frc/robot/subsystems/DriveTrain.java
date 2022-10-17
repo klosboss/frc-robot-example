@@ -38,4 +38,9 @@ public class DriveTrain extends SubsystemBase {
     motorRight2.set(ControlMode.PercentOutput, speedPercentage);
   }
 
+  public void stop() {
+    moveLeft(0.0);
+    moveRight(0.0);
+  }
+
 }

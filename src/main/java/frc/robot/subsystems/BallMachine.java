@@ -28,6 +28,10 @@ public class BallMachine extends SubsystemBase {
     this.moveMotor(-1.0);
   }
 
+  public void stop() {
+    this.moveMotor(0.0);
+  }
+
   public void moveMotor(double speed) {
     intakeMotor.set(ControlMode.PercentOutput, speed);
   }
