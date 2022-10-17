@@ -24,8 +24,6 @@ public class EjectBalls extends CommandBase {
   @Override
   public void initialize() {
     this.ballMachine.ejectBall();
-    withTimeout(duration);
-    
     timer.reset();
     timer.start();
   }

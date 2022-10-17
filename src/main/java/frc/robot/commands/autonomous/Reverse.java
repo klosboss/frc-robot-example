@@ -29,8 +29,6 @@ public class Reverse extends CommandBase {
     ballMachine.stop();
     driveTrain.moveLeft(-0.5);
     driveTrain.moveRight(-0.505);
-    withTimeout(duration);
-    
     timer.reset();
     timer.start();
   }
