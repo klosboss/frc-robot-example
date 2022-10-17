@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.LoadBall;
 import frc.robot.commands.TankDrive;
+import frc.robot.commands.autonomous.AutonomousCommandSequence;
 import frc.robot.controllers.LoadBallController;
 import frc.robot.controllers.TankDriveController;
 import frc.robot.subsystems.Arm;
@@ -42,7 +43,7 @@ public class RobotContainer {
   
 
   // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  private final Command m_autoCommand = tankDriveCommand;
+  private final Command autonomousCommand = new AutonomousCommandSequence(driveTrain, ballMachine);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -88,6 +89,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    return autonomousCommand;
   }
 }

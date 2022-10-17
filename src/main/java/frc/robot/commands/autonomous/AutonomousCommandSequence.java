@@ -13,12 +13,8 @@ import frc.robot.subsystems.DriveTrain;
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class AutonomousCommandSequence extends SequentialCommandGroup {
-  private final DriveTrain driveTrain;
-  private final BallMachine ballMachine;
   /** Creates a new AutonomousCommandSequence. */
   public AutonomousCommandSequence(DriveTrain driveTrain, BallMachine ballMachine) {
-    this.driveTrain = driveTrain;
-    this.ballMachine = ballMachine;
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
