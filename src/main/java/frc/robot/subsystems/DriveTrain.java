@@ -12,13 +12,24 @@ import frc.robot.Constants;
 
 public class DriveTrain extends SubsystemBase {
 
-  private final WPI_VictorSPX motorLeft1 = new WPI_VictorSPX(Constants.MOTOR_LEFT_1_ID);
-  private final WPI_VictorSPX motorLeft2 = new WPI_VictorSPX(Constants.MOTOR_LEFT_2_ID);
-  private final WPI_VictorSPX motorRight1 = new WPI_VictorSPX(Constants.MOTOR_RIGHT_1_ID);
-  private final WPI_VictorSPX motorRight2 = new WPI_VictorSPX(Constants.MOTOR_RIGHT_2_ID);
+  private final WPI_VictorSPX motorLeft1;
+  private final WPI_VictorSPX motorLeft2;
+  private final WPI_VictorSPX motorRight1;
+  private final WPI_VictorSPX motorRight2;
 
   /** Creates a new DriveTrain. */
   public DriveTrain() {
+    this(new WPI_VictorSPX(Constants.MOTOR_LEFT_1_ID),
+            new WPI_VictorSPX(Constants.MOTOR_LEFT_2_ID),
+            new WPI_VictorSPX(Constants.MOTOR_RIGHT_1_ID),
+            new WPI_VictorSPX(Constants.MOTOR_RIGHT_2_ID));
+  }
+
+  public DriveTrain(WPI_VictorSPX motorLeft1, WPI_VictorSPX motorLeft2, WPI_VictorSPX motorRight1, WPI_VictorSPX motorRight2) {
+    this.motorLeft1 = motorLeft1;
+    this.motorLeft2 = motorLeft2;
+    this.motorRight1 = motorRight1;
+    this.motorRight2 = motorRight2;
     motorRight1.setInverted(true);
     motorRight2.setInverted(true);
   }
