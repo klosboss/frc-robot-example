@@ -11,9 +11,15 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class BallMachine extends SubsystemBase {
-  private final WPI_VictorSPX intakeMotor = new WPI_VictorSPX(Constants.ARM_INTAKE_MOTOR_ID);
+  private final WPI_VictorSPX intakeMotor;
   /** Creates a new BallMachine. */
-  public BallMachine() {}
+  public BallMachine() {
+    this(new WPI_VictorSPX(Constants.ARM_INTAKE_MOTOR_ID));
+  }
+
+  public BallMachine(WPI_VictorSPX intakeMotor) {
+    this.intakeMotor = intakeMotor;
+  }
 
   @Override
   public void periodic() {
