@@ -13,11 +13,17 @@ public class LoadBall extends CommandBase {
 
   private final BallMachine ballMachine;
   private final LoadBallController controller;
+  private final boolean shouldSetBallSpeedToMaximum;
 
   /** Creates a new LoadBall. */
   public LoadBall(BallMachine ballMachine, LoadBallController controller) {
+    this(ballMachine, controller, Constants.INSTANT_MAX_BALL_MACHINE_SPEED);
+  }
+
+  public LoadBall(BallMachine ballMachine, LoadBallController controller, boolean shouldSetBallSpeedToMaximum) {
     this.ballMachine = ballMachine;
     this.controller = controller;
+    this.shouldSetBallSpeedToMaximum = shouldSetBallSpeedToMaximum;
     addRequirements(ballMachine);
   }
 
@@ -30,9 +36,9 @@ public class LoadBall extends CommandBase {
   public void execute() {
     double leftPosition = this.controller.getLeftPosition();
     double rightPosition = this.controller.getRightPosition();
-    if (Constants.INSTANT_MAX_BALL_MACHINE_SPEED) {
+    if (this.shouldSetBallSpeedToMaximum) {
       executeWithFullPower(leftPosition, rightPosition);
-    } {
+    } else {
       executeWithDifference(leftPosition, rightPosition);
     }
    
@@ -43,6 +49,8 @@ public class LoadBall extends CommandBase {
       this.ballMachine.acceptBall();
     } else if (leftPosition < rightPosition) {
       this.ballMachine.ejectBall();
+    } else {
+      this.ballMachine.stop();
     }
   }
 
