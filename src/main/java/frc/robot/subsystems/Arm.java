@@ -13,12 +13,22 @@ import frc.robot.Constants;
 
 public class Arm extends SubsystemBase {
 
-  private final WPI_VictorSPX armMotor = new WPI_VictorSPX(Constants.ARM_MOTOR_ID);
-  private final DigitalInput arumUpSensor = new DigitalInput(Constants.ARM_UP_SENSOR_ID);
-  private final DigitalInput armDownSensor = new DigitalInput(Constants.ARM_DOWN_SENSOR_ID);
+  private final WPI_VictorSPX armMotor;
+  private final DigitalInput armUpSensor;
+  private final DigitalInput armDownSensor;
   
   /** Creates a new Arm. */
-  public Arm() {}
+  public Arm() {
+    this(new WPI_VictorSPX(Constants.ARM_MOTOR_ID),
+            new DigitalInput(Constants.ARM_UP_SENSOR_ID),
+            new DigitalInput(Constants.ARM_DOWN_SENSOR_ID));
+  }
+
+  public Arm(WPI_VictorSPX armMotor, DigitalInput armUpSensor, DigitalInput armDownSensor) {
+    this.armMotor = armMotor;
+    this.armUpSensor = armUpSensor;
+    this.armDownSensor = armDownSensor;
+  }
 
   @Override
   public void periodic() {
@@ -26,14 +36,14 @@ public class Arm extends SubsystemBase {
   }
 
   public void raise() {
-    if (!arumUpSensor.get()){
-      armMotor.set(ControlMode.PercentOutput, Constants.ARM_UP_MOTOR_SPEED_PERCENTAGE);
+    if (!armUpSensor.get()){
+      this.moveArm(Constants.ARM_UP_MOTOR_SPEED_PERCENTAGE);
     }
   }
 
   public void lower() {
     if (!armDownSensor.get()) {
-      armMotor.set(ControlMode.PercentOutput, Math.abs(Constants.ARM_DOWN_MOTOR_SPEED_PERCENTAGE) * -1.0);
+      this.moveArm(Math.abs(Constants.ARM_DOWN_MOTOR_SPEED_PERCENTAGE) * -1.0);
     }
   }
 
@@ -41,6 +51,10 @@ public class Arm extends SubsystemBase {
    * Called when nothing to do. Ensures Arm stops moving.
    */
   public void stop() {
-    armMotor.set(ControlMode.PercentOutput, 0.0);
+    this.moveArm(0.0);
+  }
+
+  private void moveArm(double speed) {
+    armMotor.set(ControlMode.PercentOutput, speed);
   }
 }
