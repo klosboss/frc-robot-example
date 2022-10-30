@@ -8,6 +8,9 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.commands.LoadBall;
 import frc.robot.commands.TankDrive;
 import frc.robot.commands.autonomous.AutonomousCommandSequence;
@@ -42,14 +45,21 @@ public class RobotContainer {
   private final LoadBall loadBallCommand = new LoadBall(ballMachine, new LoadBallController(xboxController));
   
 
-  // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  private final Command autonomousCommand = new AutonomousCommandSequence(driveTrain, ballMachine);
+  // Add ability to choose autonomous mode in SmartDashboard
+  private final SendableChooser<Command> autonomousChooser = new SendableChooser<>();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
     this.configureButtonBindings();
     this.configureSubsystems();
+    this.configureAutonomousModes();
+  }
+
+  private void configureAutonomousModes() {
+    this.autonomousChooser.setDefaultOption("Shoot and Backup", new AutonomousCommandSequence(driveTrain, ballMachine));
+    this.autonomousChooser.addOption("Do nothing", new WaitCommand(10.0));
+    SmartDashboard.putData(this.autonomousChooser);
   }
 
   /**
@@ -88,7 +98,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return autonomousCommand;
+    return autonomousChooser.getSelected();
   }
 }
