@@ -9,14 +9,19 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.BallMachine;
 
 public class EjectBalls extends CommandBase {
-  private final BallMachine ballMachine;
-  private final double duration = 5.0;
+  public static final double COMMAND_DURATION = 5.0;
 
-  private final Timer timer = new Timer();
+  private final BallMachine ballMachine;
+  private final Timer timer;
   
   /** Creates a new EjectBalls. */
   public EjectBalls(BallMachine ballMachine) {
+    this(ballMachine, new Timer());
+  }
+
+  public EjectBalls(BallMachine ballMachine, Timer timer) {
     this.ballMachine = ballMachine;
+    this.timer = timer;
     addRequirements(ballMachine);
   }
 
@@ -41,6 +46,6 @@ public class EjectBalls extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return timer.hasElapsed(duration);
+    return timer.hasElapsed(COMMAND_DURATION);
   }
 }
