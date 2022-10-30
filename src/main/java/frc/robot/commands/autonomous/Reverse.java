@@ -10,16 +10,21 @@ import frc.robot.subsystems.BallMachine;
 import frc.robot.subsystems.DriveTrain;
 
 public class Reverse extends CommandBase {
+  private static final double COMMAND_DURATION = 5.0;
+
   private final DriveTrain driveTrain;
   private final BallMachine ballMachine;
-  private final double duration = 5.0;
-
-  private final Timer timer = new Timer();
+  private final Timer timer;
   
   /** Creates a new Reverse. */
   public Reverse(DriveTrain driveTrain, BallMachine ballMachine) {
+    this(driveTrain, ballMachine, new Timer());
+  }
+
+  public Reverse(DriveTrain driveTrain, BallMachine ballMachine, Timer timer) {
     this.driveTrain = driveTrain;
     this.ballMachine = ballMachine;
+    this.timer = timer;
     addRequirements(driveTrain, ballMachine);
   }
 
@@ -46,6 +51,6 @@ public class Reverse extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return timer.hasElapsed(duration);
+    return timer.hasElapsed(COMMAND_DURATION);
   }
 }
