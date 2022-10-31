@@ -25,7 +25,7 @@ public class TankDriveTest {
     public void givenNoTurboAndLeft50Percent_whenExecute_thenDriveTrainMoveLeftIs25Percent() {
         when(controller.getLeftPosition()).thenReturn(0.5);
         tankDrive.execute();
-        double expected = 0.5 * Constants.TANK_DRIVE_LIMITER_VALUE;
+        double expected = 0.5 * Constants.getTankDriveLimiterValue();
         expected = expected * expected;
         verify(driveTrain).moveLeft(expected);
     }
@@ -42,7 +42,7 @@ public class TankDriveTest {
     public void givenNoTurboAndLeft100Percent_whenExecute_thenDriveTrainMoveLeftIsSquareOfLimiterValue() {
         when(controller.getLeftPosition()).thenReturn(1.0);
         tankDrive.execute();
-        verify(driveTrain).moveLeft(Constants.TANK_DRIVE_LIMITER_VALUE * Constants.TANK_DRIVE_LIMITER_VALUE);
+        verify(driveTrain).moveLeft(Constants.getTankDriveLimiterValue() * Constants.getTankDriveLimiterValue());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class TankDriveTest {
     public void givenNoTurboAndRight50Percent_whenExecute_thenDriveTrainMoveLeftIs25Percent() {
         when(controller.getRightPosition()).thenReturn(0.5);
         tankDrive.execute();
-        double expected = 0.5 * Constants.TANK_DRIVE_LIMITER_VALUE;
+        double expected = 0.5 * Constants.getTankDriveLimiterValue();
         expected = expected * expected;
         verify(driveTrain).moveRight(expected);
     }
@@ -74,7 +74,7 @@ public class TankDriveTest {
     public void givenNoTurboAndRight100Percent_whenExecute_thenDriveTrainMoveLeftIsSquareOfLimiterValue() {
         when(controller.getRightPosition()).thenReturn(1.0);
         tankDrive.execute();
-        verify(driveTrain).moveRight(Constants.TANK_DRIVE_LIMITER_VALUE * Constants.TANK_DRIVE_LIMITER_VALUE);
+        verify(driveTrain).moveRight(Constants.getTankDriveLimiterValue() * Constants.getTankDriveLimiterValue());
     }
 
     @Test

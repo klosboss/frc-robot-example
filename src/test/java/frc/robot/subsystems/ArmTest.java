@@ -43,7 +43,7 @@ public class ArmTest {
     public void givenArmUpSensorOpen_whenRaise_thenRaiseArm() {
         when(armUpSensor.get()).thenReturn(false);
         arm.raise();
-        verify(armMotor).set(ControlMode.PercentOutput, Constants.ARM_UP_MOTOR_SPEED_PERCENTAGE);
+        verify(armMotor).set(ControlMode.PercentOutput, Constants.getArmUpMotorSpeedPercentage());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class ArmTest {
     public void givenArmDownSensorOpen_whenRaise_thenLowerArm() {
         when(armDownSensor.get()).thenReturn(false);
         arm.lower();
-        verify(armMotor).set(ControlMode.PercentOutput, Math.abs(Constants.ARM_DOWN_MOTOR_SPEED_PERCENTAGE) * -1.0);
+        verify(armMotor).set(ControlMode.PercentOutput, Math.abs(Constants.getArmDownMotorSpeedPercentage()) * -1.0);
     }
 
     @Test

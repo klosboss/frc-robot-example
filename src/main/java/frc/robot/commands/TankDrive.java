@@ -32,8 +32,8 @@ public class TankDrive extends CommandBase {
     double right = controller.getRightPosition();
 
     if (!turbo) {
-      left = left * Constants.TANK_DRIVE_LIMITER_VALUE;
-      right = right * Constants.TANK_DRIVE_LIMITER_VALUE;
+      left = left * Constants.getTankDriveLimiterValue();
+      right = right * Constants.getTankDriveLimiterValue();
     }
     
     this.driveTrain.moveLeft(left * left);
