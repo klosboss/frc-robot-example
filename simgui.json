@@ -1,0 +1,94 @@
+{
+  "HALProvider": {
+    "DIO": {
+      "window": {
+        "visible": true
+      }
+    },
+    "Other Devices": {
+      "Victor SPX[1]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[2]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[3]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[4]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[5]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[6]": {
+        "header": {
+          "open": true
+        }
+      }
+    }
+  },
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/Arm": "Subsystem",
+      "/LiveWindow/BallMachine": "Subsystem",
+      "/LiveWindow/DriveTrain": "Subsystem",
+      "/LiveWindow/Ungrouped/DigitalInput[0]": "Digital Input",
+      "/LiveWindow/Ungrouped/DigitalInput[1]": "Digital Input",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/SmartDashboard/SendableChooser[0]": "String Chooser"
+    }
+  },
+  "NetworkTables": {
+    "CameraPublisher": {
+      "open": true
+    },
+    "LiveWindow": {
+      "Arm": {
+        "open": true
+      },
+      "BallMachine": {
+        "open": true
+      },
+      "DriveTrain": {
+        "open": true
+      },
+      "Ungrouped": {
+        "DigitalInput[0]": {
+          "open": true
+        },
+        "DigitalInput[1]": {
+          "open": true
+        },
+        "Scheduler": {
+          "open": true
+        },
+        "open": true
+      },
+      "open": true
+    }
+  },
+  "Plot": {
+    "Plot <0>": {
+      "plots": [
+        {
+          "height": 338
+        }
+      ],
+      "window": {
+        "visible": false
+      }
+    }
+  }
+}
