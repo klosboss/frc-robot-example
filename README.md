@@ -68,6 +68,13 @@ a command class. The `Command` class only cares about getting axis position and 
 of controller that was used, nor how to interact with that controller. This essentially
 decouples the command from the type of controller used.
 
+### Constants
+Constants contain all the mappings to hardware and any other globally accessible data. Any other
+configurations, such as limiters, should be placed here as well. To add a configuration that
+can be modified can be added to the `SmartDashboard` by adding it to the 
+`initializeSmartDashboardConstants()` method adding a getter for it to be accessible from other
+`Commands` or `Subsystems`.
+
 ## Simulation
 Execute `./gradlew simulateJava` in the terminal to run the simulation for this project.
 
