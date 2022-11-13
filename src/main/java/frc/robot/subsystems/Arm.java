@@ -36,13 +36,13 @@ public class Arm extends SubsystemBase {
   }
 
   public void raise() {
-    if (!armUpSensor.get()){
+    if (armUpSensor.get()){
       this.moveArm(Constants.getArmUpMotorSpeedPercentage());
     }
   }
 
   public void lower() {
-    if (!armDownSensor.get()) {
+    if (armDownSensor.get()) {
       this.moveArm(Math.abs(Constants.getArmDownMotorSpeedPercentage()) * -1.0);
     }
   }

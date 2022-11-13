@@ -91,4 +91,14 @@ public class TankDriveTest {
         verify(driveTrain).moveLeft(0.0);
         verify(driveTrain).moveRight(0.0);
     }
+
+    @Test
+    public void givenNoTurboAndLeftAndRightAre50Percent_whenExecute_thenMoveBackwards() {
+        when(controller.getLeftPosition()).thenReturn(-0.5);
+        when(controller.getRightPosition()).thenReturn(-0.5);
+        tankDrive.activateTurbo();
+        tankDrive.execute();
+        verify(driveTrain).moveLeft(-0.25);
+        verify(driveTrain).moveRight(-0.25);
+    }
 }

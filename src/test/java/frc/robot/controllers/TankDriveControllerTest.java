@@ -32,9 +32,9 @@ public class TankDriveControllerTest {
     }
 
     @Test
-    public void givenLeftJoystickRawAxisIsNonZero_whenGetLeftPosition_thenReturnTheNonZeroValue() {
+    public void givenLeftJoystickRawAxisIsNonZero_whenGetLeftPosition_thenReturnTheNonZeroValueAndNegate() {
         when(leftJoystick.getRawAxis(Constants.TANK_JOYSTICK_AXIS)).thenReturn(1.0);
-        assertEquals(1.0, controller.getLeftPosition(), 0.0);
+        assertEquals(-1.0, controller.getLeftPosition(), 0.0);
     }
 
     @Test
@@ -44,8 +44,8 @@ public class TankDriveControllerTest {
     }
 
     @Test
-    public void givenRightJoystickRawAxisIsNonZero_whenGetRightPosition_thenReturnTheNonZeroValue() {
+    public void givenRightJoystickRawAxisIsNonZero_whenGetRightPosition_thenReturnTheNonZeroValueAndNegate() {
         when(rightJoystick.getRawAxis(Constants.TANK_JOYSTICK_AXIS)).thenReturn(1.0);
-        assertEquals(1.0, controller.getRightPosition(), 0.0);
+        assertEquals(-1.0, controller.getRightPosition(), 0.0);
     }
 }
